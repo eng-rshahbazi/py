@@ -1,0 +1,21 @@
+# Importing Required Libraries
+from itertools import product
+
+# Defining the Version Space Function
+def version_space(concepts, examples):
+    """
+    concepts: list of lists containing all possible values for each attribute
+    examples: list of tuples containing the attributes of each example
+    """
+    # Initializing the Version Space
+    version_space = []
+    
+    # Generating all Possible Hypotheses
+    for hypothesis in product(*concepts):
+        # Checking if the Hypothesis is Consistent with the Examples
+        if all([example in hypothesis for example in examples]):
+            # Adding the Consistent Hypothesis to the Version Space
+            version_space.append(hypothesis)
+    
+    # Returning the Version Space
+    return version_space
